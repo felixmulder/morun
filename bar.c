@@ -57,8 +57,10 @@ static void style_window(GtkWidget *window, wconf_t conf)
 
         gtk_css_provider_load_from_file(GTK_CSS_PROVIDER(provider), file, &err);
 
-        if (err != NULL)
-                printf("Error occurred while loading style: %s\n", err->message);
+        if (err != NULL) {
+                printf("Error occurred while loading style:\n%s\n", err->message);
+                exit(1);
+        }
 
         g_object_unref(provider);
 }

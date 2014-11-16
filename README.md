@@ -4,7 +4,7 @@ morun
 Moronic runner, beautiful but dumb.
 
 morun aims to be the goto runner for users wanting a clean, "pretty" and
-usefull runner. For now morun is really dumb - it can only run applications.
+useful runner. For now morun is really dumb - it can only run applications.
 
 Make and run using:
 

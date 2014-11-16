@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
 #include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "bar.h"
@@ -27,7 +28,11 @@ static gboolean key_pressed(GtkWidget *entry, GdkEventKey *ekey)
         return FALSE;
 }
 
-static char *get_style(int argc, char *argv[])
+/*
+ * parses args and returns style string, should be
+ * re-written to use unistd arg parsing
+ */
+static char *parse_args(int argc, char *argv[])
 {
         int i;
         for (i = 0; i < argc; i++) {
@@ -36,6 +41,11 @@ static char *get_style(int argc, char *argv[])
                         char *style = malloc((len + 1)* sizeof(char));
                         snprintf(style, len + 1, "%s", argv[i+1]);
                         return style;
+                } else if (strcmp(argv[i], "--help") == 0 ||
+                           strcmp(argv[i], "-h") == 0) {
+                        printf("Usage: morun -s STYLE\n");
+                        exit(0);
+
                 }
         }
 
@@ -49,7 +59,7 @@ int main(int argc, char *argv[])
         gtk_init(&argc, &argv);
 
         wconf_t conf = {
-                .style = get_style(argc, argv),
+                .style = parse_args(argc, argv),
                 .keypress = key_pressed
         };
 
