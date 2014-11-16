@@ -14,8 +14,6 @@ GtkWidget *create_window(gboolean (*keypress)(GtkWidget *, GdkEventKey *))
         gtk_container_add(GTK_CONTAINER(fixed_cont), search);
 
         g_signal_connect(G_OBJECT(window), "delete-event", gtk_main_quit, NULL);
-        g_signal_connect(G_OBJECT(window), "draw", G_CALLBACK(draw), NULL);
-        g_signal_connect(G_OBJECT(search), "draw", G_CALLBACK(draw), NULL);
 
         style_window(window);
         return window;
@@ -51,19 +49,6 @@ static void style_window(GtkWidget *window)
                 printf("Error occurred while loading style: %s\n", err->message);
 
         g_object_unref(provider);
-}
-
-static gboolean draw(GtkWidget *widget, cairo_t *cr, gpointer userdata)
-{
-        cairo_t *new_cr = gdk_cairo_create(gtk_widget_get_window(widget));
-        cairo_set_source_rgba(new_cr, 1.0, 1.0, 1.0, 0.5);
-
-        /* draw the background */
-        cairo_set_operator (new_cr, CAIRO_OPERATOR_SOURCE);
-        cairo_paint (new_cr);
-        cairo_destroy(new_cr);
-
-        return FALSE;
 }
 
 static GtkWidget *create_search(gboolean (*key_pressed)(GtkWidget *, GdkEventKey *))

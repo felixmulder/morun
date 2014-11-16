@@ -13,6 +13,7 @@ static GtkWidget *search;
  * returns: a pointer to the GtkWidget containing the search entry
  */
 GtkWidget *create_window(gboolean (*keypress)(GtkWidget *, GdkEventKey *));
+
 /*
  * Creates the search entry
  *
@@ -20,9 +21,9 @@ GtkWidget *create_window(gboolean (*keypress)(GtkWidget *, GdkEventKey *));
  */
 static GtkWidget *create_search(gboolean (*keypress)(GtkWidget *, GdkEventKey *));
 
+/* 
+ * Style window using style.css
+ */
 static void style_window(GtkWidget *);
-static gboolean draw(GtkWidget *widget,
-                     cairo_t *new_cr,
-                     gpointer user_data);
 
 #endif
