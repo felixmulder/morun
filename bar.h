@@ -1,5 +1,5 @@
-#ifndef WIDGETS_H
-#define WIDGETS_H
+#ifndef BAR_H
+#define BAR_H
 
 #include <gtk/gtk.h>
 #include <stdio.h>

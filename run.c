@@ -7,6 +7,5 @@ void run_prog(const gchar *prog)
         if (strcmp(prog, "") == 0)
                 return;
 
-        printf("Run: %s\n", prog);
         popen(prog, "r");
 }

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "widgets.h"
+#include "bar.h"
 
 GtkWidget *create_window(wconf_t conf)
 {

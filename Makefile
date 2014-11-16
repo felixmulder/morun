@@ -1,5 +1,5 @@
 CC = gcc
-SRCS = morun.c widgets.c run.c
+SRCS = morun.c bar.c run.c
 CFLAGS = -pthread -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 \
 		 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 \
 		 -I/usr/lib/dbus-1.0/include -I/usr/include/gtk-3.0 \

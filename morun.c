@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "widgets.h"
+#include "bar.h"
 #include "run.h"
 
 static gboolean key_pressed(GtkWidget *entry, GdkEventKey *ekey)
