@@ -7,9 +7,14 @@
 
 static gboolean key_pressed(GtkWidget *entry, GdkEventKey *ekey)
 {
+        const char *text;
+
         switch (ekey->keyval) {
         case GDK_KEY_Return:
-                run_prog(gtk_entry_get_text(GTK_ENTRY(entry)));
+                text = gtk_entry_get_text(GTK_ENTRY(entry));
+                if (strcmp(text, "") == 0)
+                        break;
+                run_prog(text);
                 gtk_main_quit();
                 break;
         case GDK_KEY_Escape:
