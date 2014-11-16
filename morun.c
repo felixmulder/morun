@@ -22,12 +22,33 @@ static gboolean key_pressed(GtkWidget *entry, GdkEventKey *ekey)
         return FALSE;
 }
 
+static char *get_style(int argc, char *argv[])
+{
+        int i;
+        for (i = 0; i < argc; i++) {
+                if (strcmp(argv[i], "-s") == 0 && i + 1 <= argc) {
+                        size_t len = strlen(argv[i+1]);
+                        char *style = malloc((len + 1)* sizeof(char));
+                        snprintf(style, len + 1, "%s", argv[i+1]);
+                        return style;
+                }
+        }
+
+        return NULL;
+}
+
 int main(int argc, char *argv[])
 {
         GtkWidget       *window;
 
         gtk_init(&argc, &argv);
-        window = create_window(key_pressed);
+
+        wconf_t conf = {
+                .style = get_style(argc, argv),
+                .keypress = key_pressed
+        };
+
+        window = create_window(conf);
         gtk_widget_show_all(window);
         gtk_main();
 
