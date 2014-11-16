@@ -7,14 +7,16 @@
 
 static gboolean key_pressed(GtkWidget *entry, GdkEventKey *ekey)
 {
-        char            *keyval;
-        
-        keyval = gdk_keyval_name(ekey->keyval);
-        printf("key pressed: %s\n", keyval);
-
-        if (strcmp(keyval, "Return") == 0) {
+        switch (ekey->keyval) {
+        case GDK_KEY_Return:
                 run_prog(gtk_entry_get_text(GTK_ENTRY(entry)));
                 gtk_main_quit();
+                break;
+        case GDK_KEY_Escape:
+                gtk_main_quit();
+                break;
+        default:
+                break;
         }
 
         return FALSE;
